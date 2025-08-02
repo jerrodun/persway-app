@@ -3,7 +3,7 @@
 client_id = "6aade9a5865703b7630aba698e963152"
 name = "persway-app-main"
 handle = "persway-app-main-1"
-application_url = "https://decrease-several-aggressive-excuse.trycloudflare.com"
+application_url = "https://expectations-avi-writings-extraordinary.trycloudflare.com"
 embedded = true
 
 [build]
@@ -23,13 +23,13 @@ api_version = "2025-07"
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products"
+scopes = "write_customers,read_customers,write_products,read_products"
 
 [auth]
 redirect_urls = [
-  "https://decrease-several-aggressive-excuse.trycloudflare.com/auth/callback",
-  "https://decrease-several-aggressive-excuse.trycloudflare.com/auth/shopify/callback",
-  "https://decrease-several-aggressive-excuse.trycloudflare.com/api/auth/callback"
+  "https://expectations-avi-writings-extraordinary.trycloudflare.com/auth/callback",
+  "https://expectations-avi-writings-extraordinary.trycloudflare.com/auth/shopify/callback",
+  "https://expectations-avi-writings-extraordinary.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]

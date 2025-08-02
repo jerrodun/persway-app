@@ -64,9 +64,14 @@ app/
 
 ### Shopify Configuration
 - **API Version**: 2025-07
-- **Scopes**: write_products
+- **Scopes**: write_customers,read_customers,write_products,read_products
 - **Embedded**: true (runs inside Shopify admin)
 - **App ID**: 6aade9a5865703b7630aba698e963152
+
+### Required Scopes Explanation
+- **write_customers, read_customers**: Required for accessing customer resources and creating/reading customer metafields
+- **write_products, read_products**: Required for product operations and metafield access
+- **Note**: Metafield access is controlled through resource scopes, not separate metafield-specific scopes
 
 ### Development Workflow
 1. Always run `npm run dev` for local development
