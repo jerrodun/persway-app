@@ -3,7 +3,7 @@
 client_id = "6aade9a5865703b7630aba698e963152"
 name = "persway-app-main"
 handle = "persway-app-main-1"
-application_url = "https://expectations-avi-writings-extraordinary.trycloudflare.com"
+application_url = "https://terrorists-mu-packing-craig.trycloudflare.com"
 embedded = true
 
 [build]
@@ -27,9 +27,9 @@ scopes = "write_customers,read_customers,write_products,read_products"
 
 [auth]
 redirect_urls = [
-  "https://expectations-avi-writings-extraordinary.trycloudflare.com/auth/callback",
-  "https://expectations-avi-writings-extraordinary.trycloudflare.com/auth/shopify/callback",
-  "https://expectations-avi-writings-extraordinary.trycloudflare.com/api/auth/callback"
+  "https://terrorists-mu-packing-craig.trycloudflare.com/auth/callback",
+  "https://terrorists-mu-packing-craig.trycloudflare.com/auth/shopify/callback",
+  "https://terrorists-mu-packing-craig.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]

@@ -80,6 +80,20 @@ app/
 4. Check performance impact on every feature
 5. Use Polaris components for admin UI consistency
 
+### App Onboarding Process
+When a merchant installs Persway.io, the following metafield definitions are automatically created:
+
+#### Customer Metafields (for behavior tracking):
+- `$app:persway_events.behavior_data` - Customer behavioral events and audience assignments
+- `$app:persway_session.migration_data` - Anonymous session data migration tracking
+
+#### Shop Metafields (for configuration):
+- `$app:persway_config.audiences` - Audience definitions and rules
+- `$app:persway_config.theme_blocks` - Personalized content configurations
+
+**Manual Setup**: For development/testing, visit `/app/setup` to initialize metafield definitions
+**Production**: Metafield definitions should be created automatically on app installation (future implementation)
+
 ### Critical Implementation Notes
 - **Privacy First**: Use Web Pixel API only for tracking
 - **Scope Control**: Only implement explicitly requested features

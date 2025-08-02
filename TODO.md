@@ -8,6 +8,8 @@
 - [x] Basic Remix app setup
 - [x] Data model design (DATA_MODELS.md)
 - [x] CLAUDE.md guidance document
+- [x] **Task 1**: Shopify app scope configuration for metafield access
+- [x] **Task 2**: Metafield definitions and setup infrastructure
 
 ## 🔄 Current Focus: Phase 1 Completion
 
@@ -84,6 +86,7 @@ scopes = "write_customers,read_customers,write_customer_metafields,read_customer
 - [ ] Save audience definitions to shop metafields
 
 ## 🚫 Not Started (Future Phases)
+- **Automatic App Onboarding**: Webhook-based metafield definition creation on app install
 - Web Pixel API integration
 - Customer audience assignment logic  
 - Theme app extensions
