@@ -3,11 +3,12 @@
 client_id = "6aade9a5865703b7630aba698e963152"
 name = "persway-app-main"
 handle = "persway-app-main-1"
-application_url = "https://example.com/"
+application_url = "https://decrease-several-aggressive-excuse.trycloudflare.com"
 embedded = true
 
 [build]
 include_config_on_deploy = true
+automatically_update_urls_on_dev = true
 
 [webhooks]
 api_version = "2025-07"
@@ -25,7 +26,11 @@ api_version = "2025-07"
 scopes = "write_products"
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [
+  "https://decrease-several-aggressive-excuse.trycloudflare.com/auth/callback",
+  "https://decrease-several-aggressive-excuse.trycloudflare.com/auth/shopify/callback",
+  "https://decrease-several-aggressive-excuse.trycloudflare.com/api/auth/callback"
+]
 
 [pos]
 embedded = false
