@@ -409,7 +409,7 @@ export async function updateCustomerMigrationData(
 // Shop metafield operations
 export async function getShopAudiences(admin: AdminApiContext): Promise<ShopAudiences | null> {
   try {
-    const result = await executeGraphQL<{ shop: { metafield: { value: string } | null } }>(
+    const result = await executeGraphQL<{ shop: { id: string; metafield: { value: string } | null } }>(
       admin,
       GET_SHOP_METAFIELD,
       {
@@ -440,11 +440,19 @@ export async function updateShopAudiences(
       throw new MetafieldError('Audiences data exceeds recommended size limit (~500KB)');
     }
 
+    // Get shop ID first
+    const shopResult = await executeGraphQL<{ shop: { id: string } }>(
+      admin,
+      `query { shop { id } }`,
+      {}
+    );
+
     await executeGraphQL(
       admin,
       UPDATE_SHOP_METAFIELD,
       {
         metafields: [{
+          ownerId: shopResult.shop.id,
           namespace: '$app:persway_config',
           key: 'audiences',
           value: JSON.stringify(data),
@@ -460,7 +468,7 @@ export async function updateShopAudiences(
 
 export async function getShopThemeBlocks(admin: AdminApiContext): Promise<ShopThemeBlocks | null> {
   try {
-    const result = await executeGraphQL<{ shop: { metafield: { value: string } | null } }>(
+    const result = await executeGraphQL<{ shop: { id: string; metafield: { value: string } | null } }>(
       admin,
       GET_SHOP_METAFIELD,
       {
@@ -491,11 +499,19 @@ export async function updateShopThemeBlocks(
       throw new MetafieldError('Theme blocks data exceeds recommended size limit (~250KB)');
     }
 
+    // Get shop ID first
+    const shopResult = await executeGraphQL<{ shop: { id: string } }>(
+      admin,
+      `query { shop { id } }`,
+      {}
+    );
+
     await executeGraphQL(
       admin,
       UPDATE_SHOP_METAFIELD,
       {
         metafields: [{
+          ownerId: shopResult.shop.id,
           namespace: '$app:persway_config',
           key: 'theme_blocks',
           value: JSON.stringify(data),
