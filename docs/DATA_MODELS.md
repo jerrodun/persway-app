@@ -109,36 +109,6 @@ scopes = "write_customers,read_customers,write_customer_metafields,read_customer
 }
 ```
 
-### 2. Anonymous Session Migration Metafield
-
-**Purpose**: Track data migrated from anonymous sessions  
-**Namespace**: `$app:persway_session`  
-**Key**: `migration_data`  
-**Type**: `json`
-
-```json
-{
-  "version": "1.0",
-  "migrations": [
-    {
-      "persway_id": "anon_xyz789",
-      "migrated_at": "2025-01-15T10:30:00Z",
-      "session_start": "2025-01-15T09:00:00Z",
-      "events_count": 8,
-      "pre_auth_summary": {
-        "pages_viewed": 5,
-        "products_viewed": 3,
-        "time_spent": 1200,
-        "categories_browsed": ["cats", "toys"]
-      }
-    }
-  ],
-  "migration_stats": {
-    "total_migrations": 1,
-    "last_migration": "2025-01-15T10:30:00Z"
-  }
-}
-```
 
 ## Shop Configuration Model
 

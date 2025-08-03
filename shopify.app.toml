@@ -3,7 +3,7 @@
 client_id = "6aade9a5865703b7630aba698e963152"
 name = "persway-app-main"
 handle = "persway-app-main-1"
-application_url = "https://pre-scripting-loan-category.trycloudflare.com"
+application_url = "https://longitude-gradually-petroleum-stretch.trycloudflare.com"
 embedded = true
 
 [build]
@@ -27,9 +27,9 @@ scopes = "write_customers,read_customers,write_products,read_products,write_pixe
 
 [auth]
 redirect_urls = [
-  "https://pre-scripting-loan-category.trycloudflare.com/auth/callback",
-  "https://pre-scripting-loan-category.trycloudflare.com/auth/shopify/callback",
-  "https://pre-scripting-loan-category.trycloudflare.com/api/auth/callback"
+  "https://longitude-gradually-petroleum-stretch.trycloudflare.com/auth/callback",
+  "https://longitude-gradually-petroleum-stretch.trycloudflare.com/auth/shopify/callback",
+  "https://longitude-gradually-petroleum-stretch.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]

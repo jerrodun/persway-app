@@ -6,6 +6,7 @@
  */
 
 import type { AdminApiContext } from "@shopify/shopify-app-remix/server";
+import { getShopId, validateMetafieldSize } from "./metafield-definitions";
 
 // Type definitions based on DATA_MODELS.md
 export interface CustomerBehaviorData {
@@ -67,25 +68,6 @@ export interface CustomerBehaviorData {
   };
 }
 
-export interface SessionMigrationData {
-  version: string;
-  migrations: Array<{
-    persway_id: string;
-    migrated_at: string;
-    session_start: string;
-    events_count: number;
-    pre_auth_summary: {
-      pages_viewed: number;
-      products_viewed: number;
-      time_spent: number;
-      categories_browsed: string[];
-    };
-  }>;
-  migration_stats: {
-    total_migrations: number;
-    last_migration: string | null;
-  };
-}
 
 export interface ShopAudiences {
   version: string;
@@ -320,10 +302,7 @@ export async function updateCustomerBehaviorData(
 ): Promise<void> {
   try {
     // Validate data size (target ~200KB)
-    const jsonString = JSON.stringify(data);
-    if (jsonString.length > 250000) { // 250KB safety buffer
-      throw new MetafieldError('Behavior data exceeds recommended size limit (~200KB)');
-    }
+    validateMetafieldSize(data, 200, 'Customer behavior data');
 
     // Update timestamp
     data.data_retention.last_updated = new Date().toISOString();
@@ -348,65 +327,8 @@ export async function updateCustomerBehaviorData(
   }
 }
 
-export async function getCustomerMigrationData(
-  admin: AdminApiContext,
-  customerId: string
-): Promise<SessionMigrationData | null> {
-  try {
-    const result = await executeGraphQL<{ customer: { metafield: { value: string } | null } }>(
-      admin,
-      GET_CUSTOMER_METAFIELD,
-      {
-        customerId: `gid://shopify/Customer/${customerId}`,
-        namespace: '$app:persway_session',
-        key: 'migration_data'
-      }
-    );
 
-    if (!result.customer?.metafield?.value) {
-      return null;
-    }
-
-    return JSON.parse(result.customer.metafield.value) as SessionMigrationData;
-  } catch (error) {
-    if (error instanceof RateLimitError) throw error;
-    throw new MetafieldError(`Failed to get customer migration data: ${error instanceof Error ? error.message : 'Unknown error'}`);
-  }
-}
-
-export async function updateCustomerMigrationData(
-  admin: AdminApiContext,
-  customerId: string,
-  data: SessionMigrationData
-): Promise<void> {
-  try {
-    // Validate data size (target ~50KB)
-    const jsonString = JSON.stringify(data);
-    if (jsonString.length > 75000) { // 75KB safety buffer
-      throw new MetafieldError('Migration data exceeds recommended size limit (~50KB)');
-    }
-
-    await executeGraphQL(
-      admin,
-      UPDATE_CUSTOMER_METAFIELD,
-      {
-        customerId: `gid://shopify/Customer/${customerId}`,
-        metafields: [{
-          ownerId: `gid://shopify/Customer/${customerId}`,
-          namespace: '$app:persway_session',
-          key: 'migration_data',
-          value: JSON.stringify(data),
-          type: 'json'
-        }]
-      }
-    );
-  } catch (error) {
-    if (error instanceof MetafieldError || error instanceof RateLimitError) throw error;
-    throw new MetafieldError(`Failed to update customer migration data: ${error instanceof Error ? error.message : 'Unknown error'}`);
-  }
-}
-
-// Shop metafield operations
+// Shop metafield operations (using app-owned shop metafields for configuration)
 export async function getShopAudiences(admin: AdminApiContext): Promise<ShopAudiences | null> {
   try {
     const result = await executeGraphQL<{ shop: { id: string; metafield: { value: string } | null } }>(
@@ -435,24 +357,17 @@ export async function updateShopAudiences(
 ): Promise<void> {
   try {
     // Validate data size (target ~500KB)
-    const jsonString = JSON.stringify(data);
-    if (jsonString.length > 600000) { // 600KB safety buffer
-      throw new MetafieldError('Audiences data exceeds recommended size limit (~500KB)');
-    }
+    validateMetafieldSize(data, 500, 'Shop audiences data');
 
-    // Get shop ID first
-    const shopResult = await executeGraphQL<{ shop: { id: string } }>(
-      admin,
-      `query { shop { id } }`,
-      {}
-    );
+    // Get shop ID
+    const shopId = await getShopId(admin);
 
     await executeGraphQL(
       admin,
       UPDATE_SHOP_METAFIELD,
       {
         metafields: [{
-          ownerId: shopResult.shop.id,
+          ownerId: shopId,
           namespace: '$app:persway_config',
           key: 'audiences',
           value: JSON.stringify(data),
@@ -494,24 +409,17 @@ export async function updateShopThemeBlocks(
 ): Promise<void> {
   try {
     // Validate data size (target ~250KB)
-    const jsonString = JSON.stringify(data);
-    if (jsonString.length > 300000) { // 300KB safety buffer
-      throw new MetafieldError('Theme blocks data exceeds recommended size limit (~250KB)');
-    }
+    validateMetafieldSize(data, 250, 'Shop theme blocks data');
 
-    // Get shop ID first
-    const shopResult = await executeGraphQL<{ shop: { id: string } }>(
-      admin,
-      `query { shop { id } }`,
-      {}
-    );
+    // Get shop ID
+    const shopId = await getShopId(admin);
 
     await executeGraphQL(
       admin,
       UPDATE_SHOP_METAFIELD,
       {
         metafields: [{
-          ownerId: shopResult.shop.id,
+          ownerId: shopId,
           namespace: '$app:persway_config',
           key: 'theme_blocks',
           value: JSON.stringify(data),

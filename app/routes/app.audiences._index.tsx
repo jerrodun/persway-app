@@ -207,8 +207,8 @@ export default function AudiencesIndex() {
                   <Link to="/app/audiences/new">
                     <Button fullWidth>Create New Audience</Button>
                   </Link>
-                  <Link to="/app/setup">
-                    <Button fullWidth variant="tertiary">Setup Metafields</Button>
+                  <Link to="/app/installation">
+                    <Button fullWidth variant="tertiary">Installation Status</Button>
                   </Link>
                 </BlockStack>
               </BlockStack>

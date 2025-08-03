@@ -6,7 +6,7 @@ This document outlines the onboarding process for merchants installing Persway.i
 
 ## Required Metafield Definitions
 
-Persway.io requires four metafield definitions to be created during app installation:
+Persway.io requires three metafield definitions to be created during app installation:
 
 ### Customer Metafields
 These store individual customer behavior data and enable cross-device tracking:
@@ -17,22 +17,16 @@ These store individual customer behavior data and enable cross-device tracking:
    - **Target Size**: ~200KB for optimal performance
    - **Contains**: Event summaries, audience assignment, affinity scores, recent events
 
-2. **Session Migration Data** (`$app:persway_session.migration_data`)
-   - **Purpose**: Tracks data migrated from anonymous sessions when customer logs in
-   - **Type**: JSON  
-   - **Target Size**: ~50KB
-   - **Contains**: Migration history, pre-authentication session summaries
-
 ### Shop Metafields
 These store app configuration and audience management data:
 
-3. **Audience Definitions** (`$app:persway_config.audiences`)
+2. **Audience Definitions** (`$app:persway_config.audiences`)
    - **Purpose**: Stores all audience definitions, rules, and performance metrics
    - **Type**: JSON
    - **Target Size**: ~500KB to support hundreds of audiences
    - **Contains**: Audience rules, priority settings, performance metrics
 
-4. **Theme Block Configurations** (`$app:persway_config.theme_blocks`)
+3. **Theme Block Configurations** (`$app:persway_config.theme_blocks`)
    - **Purpose**: Stores personalized content configurations for each audience
    - **Type**: JSON
    - **Target Size**: ~250KB

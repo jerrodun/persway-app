@@ -134,10 +134,6 @@ export default function SetupPage() {
                   Stores customer behavioral events and audience assignments
                 </List.Item>
                 <List.Item>
-                  <strong>Session Migration Data</strong> ($app:persway_session.migration_data) - 
-                  Tracks anonymous session data migration
-                </List.Item>
-                <List.Item>
                   <strong>Audience Definitions</strong> ($app:persway_config.audiences) - 
                   Stores audience rules and configurations
                 </List.Item>

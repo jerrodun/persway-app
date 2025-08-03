@@ -25,8 +25,8 @@ export default function App() {
           Dashboard
         </Link>
         <Link to="/app/audiences">Audiences</Link>
-        <Link to="/app/install-pixel">Web Pixel</Link>
-        <Link to="/app/test-pixel">Debug</Link>
+        <Link to="/app/installation">Setup</Link>
+        <Link to="/app/pixel/debug">Debug</Link>
       </NavMenu>
       <Outlet />
     </AppProvider>

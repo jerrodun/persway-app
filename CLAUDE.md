@@ -85,7 +85,6 @@ When a merchant installs Persway.io, the following metafield definitions are aut
 
 #### Customer Metafields (for behavior tracking):
 - `$app:persway_events.behavior_data` - Customer behavioral events and audience assignments
-- `$app:persway_session.migration_data` - Anonymous session data migration tracking
 
 #### Shop Metafields (for configuration):
 - `$app:persway_config.audiences` - Audience definitions and rules
@@ -137,7 +136,7 @@ Currently only session management via Prisma:
    - Admin Dashboard (overview metrics)
 
 4. **DATA_MODELS.md** - Complete data structure specifications
-   - Customer metafield schemas (behavior_data, migration_data)
+   - Customer metafield schemas (behavior_data)
    - Shop metafield schemas (audiences, theme_blocks)
    - localStorage structure for anonymous users
    - Event processing pipeline and migration strategies
