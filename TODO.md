@@ -1,7 +1,7 @@
 # Active Development TODO
 
 **Last Updated**: 2025-08-02  
-**Current Phase**: Phase 1 Foundation (COMPLETE) → Phase 2 Core Features (starting)
+**Current Phase**: Phase 2 Core Features (COMPLETE) → Phase 3 Advanced Features (starting)
 
 ## ✅ Completed
 - [x] Project documentation (OVERVIEW.md, ARCHITECTURE.md, FEATURES.md)
@@ -11,33 +11,61 @@
 - [x] **Task 1**: Shopify app scope configuration for metafield access
 - [x] **Task 2**: Metafield definitions and setup infrastructure
 - [x] **Task 3**: Basic metafield operations library
+- [x] **Task 4**: Basic admin dashboard structure (audience list view)
+- [x] **Task 5**: Audience creation interface (complete form system)
 
-## 🔄 Current Focus: Phase 2 Core Features (Starting)
+## 🔄 Current Focus: Phase 3 - Path A (Customer Experience)
 
-### Task 4: Basic Admin Dashboard Structure
-**Priority**: Medium  
-**Dependencies**: Task 3 (metafield operations)
-- [ ] Create audience list view route (`app/routes/app.audiences._index.tsx`)
-- [ ] Create basic Polaris table layout
-- [ ] Connect to shop metafields for audience data
-- [ ] Add "Create New Audience" button (no functionality yet)
+**Selected Path**: Path A - Customer Experience (Immediate Value)  
+**Goal**: Enable actual customer personalization with behavior tracking and audience assignment
 
-### Task 5: Audience Creation Interface
-**Priority**: Medium  
-**Dependencies**: Task 4 (dashboard structure)
-- [ ] Create audience creation route (`app/routes/app.audiences.new.tsx`)
-- [ ] Build Polaris form components for audience configuration
-- [ ] Implement basic rule builder interface
-- [ ] Save audience definitions to shop metafields
+### Task 6: Web Pixel API Integration
+**Priority**: High  
+**Estimated Time**: 2-3 hours  
+**Dependencies**: Tasks 1-5 (audience management complete)
 
-## 🚫 Not Started (Future Phases)
-- **Automatic App Onboarding**: Webhook-based metafield definition creation on app install
-- Web Pixel API integration
-- Customer audience assignment logic  
-- Theme app extensions
-- Privacy compliance features
-- Performance optimization
-- Production deployment
+**Subtasks**:
+- [ ] Create Web Pixel extension for event tracking
+- [ ] Implement customer behavior data collection  
+- [ ] Handle anonymous vs authenticated user tracking
+- [ ] Set up data flow from pixel to metafields
+- [ ] Test event capture and data validation
+
+### Task 7: Customer Audience Assignment Logic
+**Priority**: High  
+**Estimated Time**: 2-3 hours  
+**Dependencies**: Task 6 (behavior data collection)
+
+**Subtasks**:
+- [ ] Create background audience evaluation system
+- [ ] Implement rule matching against customer data
+- [ ] Handle priority-based audience assignment  
+- [ ] Create assignment workflow and triggers
+- [ ] Test customer assignment accuracy and performance
+
+## 📋 Future Development Paths (Preserved for Later)
+
+### Path B: Merchant Experience Enhancements
+**Goal**: Polish audience management interface  
+**Status**: Documented for future implementation
+
+#### Planned Features:
+- Audience editing and deletion functionality
+- Bulk operations (activate/deactivate multiple audiences)
+- Advanced rule builder with multiple conditions
+- Audience performance dashboard and analytics
+- Rule templates and optimization suggestions
+
+### Path C: Production Readiness & Theme Integration
+**Goal**: Prepare for real-world deployment  
+**Status**: Documented for future implementation
+
+#### Planned Features:
+- Theme App Extensions (hero banner personalization)
+- Automatic app onboarding webhook system
+- Comprehensive error monitoring and logging
+- Performance optimization and load testing
+- App Store submission preparation
 
 ## ⚠️ Important Notes
 
@@ -56,4 +84,11 @@
 
 ---
 
-**Next Session Goal**: Complete Tasks 1-3 to establish solid metafield foundation before building any UI components.
+**Current Status**: ✅ **Phase 2 Complete** - Full audience management system operational
+
+**Achievement**: Merchants can now create, view, and manage customer audiences with sophisticated behavioral rules. The foundation for customer personalization is complete.
+
+**Next Decision**: Choose development path based on priorities:
+- **Path A** (Customer Experience): Enable actual customer personalization with Web Pixel tracking
+- **Path B** (Merchant Experience): Polish audience management with editing, deletion, and analytics  
+- **Path C** (Production Readiness): Build theme extensions and production infrastructure

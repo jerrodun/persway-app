@@ -1,0 +1,30 @@
+# Persway.io Web Pixel Extension Configuration
+# Tracks customer behavior events for audience assignment and personalization
+
+api_version = "2025-07"
+
+type = "web_pixel_extension"
+name = "persway-pixel"
+runtime_context = "strict"
+
+[customer_privacy]
+analytics = true
+marketing = false
+preferences = false
+sale_of_data = "disabled"
+
+[runtime_configuration_definition]
+type = "object"
+
+[runtime_configuration_definition.fields]
+
+[settings]
+type = "object"
+
+[settings.fields.accountID]
+name = "Account ID"
+description = "Your Persway Account ID"
+type = "single_line_text_field"
+validations = [
+  { name = "min", value = "1" }
+]

@@ -3,7 +3,7 @@
 client_id = "6aade9a5865703b7630aba698e963152"
 name = "persway-app-main"
 handle = "persway-app-main-1"
-application_url = "https://progress-fitted-inputs-nb.trycloudflare.com"
+application_url = "https://pre-scripting-loan-category.trycloudflare.com"
 embedded = true
 
 [build]
@@ -23,13 +23,13 @@ api_version = "2025-07"
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_customers,read_customers,write_products,read_products"
+scopes = "write_customers,read_customers,write_products,read_products,write_pixels,read_customer_events"
 
 [auth]
 redirect_urls = [
-  "https://progress-fitted-inputs-nb.trycloudflare.com/auth/callback",
-  "https://progress-fitted-inputs-nb.trycloudflare.com/auth/shopify/callback",
-  "https://progress-fitted-inputs-nb.trycloudflare.com/api/auth/callback"
+  "https://pre-scripting-loan-category.trycloudflare.com/auth/callback",
+  "https://pre-scripting-loan-category.trycloudflare.com/auth/shopify/callback",
+  "https://pre-scripting-loan-category.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]
